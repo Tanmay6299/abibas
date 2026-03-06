@@ -1,14 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Facebook, Twitter, Instagram, Youtube, Check } from 'lucide-react';
 import './Footer.css';
-import { Facebook, Twitter, Instagram, Youtube } from 'lucide-react';
 
 const Footer = () => {
+  const [email, setEmail] = useState('');
+  const [isSubscribed, setIsSubscribed] = useState(false);
+
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    if (email) {
+      setIsSubscribed(true);
+      setEmail('');
+    }
+  };
+
   return (
     <footer className="footer">
       <div className="footer-newsletter">
         <div className="container newsletter-content">
-          <h2 className="newsletter-title">JOIN OUR ADICLUB & GET 15% OFF</h2>
-          <button className="btn btn-solid btn-newsletter">SIGN UP FOR FREE</button>
+          {isSubscribed ? (
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', color: 'black' }}>
+               <Check size={32} />
+               <h2 className="newsletter-title" style={{ margin: 0 }}>YOU'RE ON THE LIST! CHECK YOUR INBOX FOR 15% OFF.</h2>
+            </div>
+          ) : (
+            <>
+              <h2 className="newsletter-title">JOIN OUR ADICLUB & GET 15% OFF</h2>
+              <form className="newsletter-form" onSubmit={handleSubscribe} style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                <input 
+                  type="email" 
+                  placeholder="Enter your email" 
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  style={{
+                    padding: '1rem',
+                    border: '1px solid var(--color-gray-300)',
+                    minWidth: '300px',
+                    fontFamily: 'var(--font-body)'
+                  }}
+                />
+                <button type="submit" className="btn btn-solid btn-newsletter">SIGN UP FOR FREE</button>
+              </form>
+            </>
+          )}
         </div>
       </div>
       

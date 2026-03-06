@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ArrowRight, Heart, ChevronDown } from 'lucide-react';
 import { ShopContext } from '../context/ShopContext';
+import ProductGrid from '../components/ProductGrid';
 import './ProductDetails.css';
 
 const SIZES = ['M 7 / W 8', 'M 8 / W 9', 'M 9 / W 10', 'M 10 / W 11', 'M 11 / W 12'];
@@ -65,7 +66,9 @@ const ProductDetails = () => {
         {/* Left Side: Image Gallery */}
         <div className="product-gallery">
           {product.new && <span className="product-badge" style={{top: '2rem', left: '2rem'}}>NEW</span>}
-          <img src={product.image} alt={product.name} className="product-main-image" />
+          <div className="main-image-wrapper">
+            <img src={product.image} alt={product.name} className="product-main-image" />
+          </div>
         </div>
 
         {/* Right Side: Product Info */}
@@ -200,6 +203,17 @@ const ProductDetails = () => {
 
         </div>
       </div>
+
+      {/* Related Products Section */}
+      <section className="container" style={{padding: '5rem 0', borderTop: '1px solid var(--color-gray-200)'}}>
+        <h2 style={{fontFamily: 'var(--font-heading)', fontSize: '2.5rem', marginBottom: '2rem'}}>YOU MAY ALSO LIKE</h2>
+        <ProductGrid 
+          customProducts={products
+            .filter(p => p.category === product.category && p.id !== product.id)
+            .slice(0, 4)
+          } 
+        />
+      </section>
     </div>
   );
 };

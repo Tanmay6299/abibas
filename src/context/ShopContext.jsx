@@ -8,6 +8,15 @@ export const ShopProvider = ({ children }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [user, setUser] = useState(null);
+  const [toasts, setToasts] = useState([]);
+
+  const showToast = (message, type = 'info') => {
+    const id = Date.now();
+    setToasts(prev => [...prev, { id, message, type }]);
+    setTimeout(() => {
+      setToasts(prev => prev.filter(t => t.id !== id));
+    }, 3000);
+  };
 
   // Doubled Mock Products Database (24 items)
   const products = [
@@ -176,6 +185,19 @@ export const ShopProvider = ({ children }) => {
       return [...prev, { ...product, size, quantity: 1 }];
     });
     setIsCartOpen(true);
+    showToast(`ADDED ${product.name} TO BAG`, 'cart');
+  };
+
+  const toggleWishlist = (productId) => {
+    const product = products.find(p => p.id === productId);
+    setWishlistItems(prev => {
+      if (prev.includes(productId)) {
+        showToast(`REMOVED ${product?.name} FROM WISHLIST`, 'info');
+        return prev.filter(id => id !== productId);
+      }
+      showToast(`ADDED ${product?.name} TO WISHLIST`, 'wishlist');
+      return [...prev, productId];
+    });
   };
 
   const removeFromCart = (productId, size) => {
@@ -244,7 +266,8 @@ export const ShopProvider = ({ children }) => {
       user,
       login,
       signup,
-      logout
+      logout,
+      toasts
     }}>
       {children}
     </ShopContext.Provider>
