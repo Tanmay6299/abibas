@@ -64,9 +64,9 @@ const Navbar = () => {
             )}
           </button>
           
-          <button className="icon-btn hide-mobile">
+          <Link to="/profile" className="icon-btn hide-mobile">
             <User size={20} />
-          </button>
+          </Link>
           
           <button className="icon-btn relative" onClick={() => setIsCartOpen(true)}>
             <ShoppingBag size={20} />

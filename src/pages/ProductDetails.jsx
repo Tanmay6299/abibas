@@ -13,6 +13,7 @@ const ProductDetails = () => {
   
   const [selectedSize, setSelectedSize] = useState('');
   const [sizeError, setSizeError] = useState(false);
+  const [openAccordion, setOpenAccordion] = useState('description');
   
   const product = products.find(p => p.id === parseInt(id));
   
@@ -41,6 +42,20 @@ const ProductDetails = () => {
     }
     setSizeError(false);
     addToCart(product, selectedSize);
+  };
+
+  const toggleAccordion = (section) => {
+    setOpenAccordion(prev => prev === section ? '' : section);
+  };
+
+  const renderStars = (rating) => {
+    return (
+      <div className="stars">
+        {[1, 2, 3, 4, 5].map(star => (
+          <span key={star} className={star <= rating ? '' : 'empty'}>★</span>
+        ))}
+      </div>
+    );
   };
 
   return (
@@ -111,23 +126,75 @@ const ProductDetails = () => {
           </div>
 
           <div className="product-details-accordion">
+             {/* Description Accordion */}
              <div className="accordion-item">
-               <div className="accordion-header">
+               <div className="accordion-header" onClick={() => toggleAccordion('description')}>
                  <span>Description</span>
-                 <ChevronDown size={20} />
+                 <ChevronDown size={20} style={{ transform: openAccordion === 'description' ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }} />
                </div>
+               {openAccordion === 'description' && (
+                 <div className="accordion-content">
+                   {product.longDescription || product.description}
+                 </div>
+               )}
              </div>
+
+             {/* Details Accordion */}
              <div className="accordion-item">
-               <div className="accordion-header">
+               <div className="accordion-header" onClick={() => toggleAccordion('details')}>
                  <span>Details</span>
-                 <ChevronDown size={20} />
+                 <ChevronDown size={20} style={{ transform: openAccordion === 'details' ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }} />
                </div>
+               {openAccordion === 'details' && (
+                 <div className="accordion-content">
+                   {product.detailsList ? (
+                     <ul className="details-list">
+                       {product.detailsList.map((detail, idx) => (
+                         <li key={idx}>{detail}</li>
+                       ))}
+                     </ul>
+                   ) : (
+                     <p>Product details currently unavailable.</p>
+                   )}
+                 </div>
+               )}
              </div>
+
+             {/* Reviews Accordion */}
              <div className="accordion-item">
-               <div className="accordion-header">
-                 <span>Reviews</span>
-                 <ChevronDown size={20} />
+               <div className="accordion-header" onClick={() => toggleAccordion('reviews')}>
+                 <span>Reviews ({product.reviews ? product.reviews.length : 0})</span>
+                 <ChevronDown size={20} style={{ transform: openAccordion === 'reviews' ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }} />
                </div>
+               {openAccordion === 'reviews' && (
+                 <div className="accordion-content">
+                   {product.reviews && product.reviews.length > 0 ? (
+                     <>
+                       <div className="reviews-summary">
+                         <h3 style={{fontFamily: 'var(--font-heading)', fontSize: '2.5rem', margin: 0}}>
+                           {(product.reviews.reduce((acc, rev) => acc + rev.rating, 0) / product.reviews.length).toFixed(1)}
+                         </h3>
+                         {renderStars(Math.round(product.reviews.reduce((acc, rev) => acc + rev.rating, 0) / product.reviews.length))}
+                       </div>
+                       
+                       <div className="reviews-list">
+                         {product.reviews.map(review => (
+                           <div key={review.id} className="review-card">
+                             <div className="review-header">
+                               <span className="review-author">{review.author}</span>
+                               <span className="review-date">{review.date}</span>
+                             </div>
+                             {renderStars(review.rating)}
+                             <p className="review-text">"{review.text}"</p>
+                           </div>
+                         ))}
+                       </div>
+                     </>
+                   ) : (
+                     <p>No reviews yet.</p>
+                   )}
+                 </div>
+               )}
              </div>
           </div>
 

@@ -185,3 +185,65 @@
   text-decoration: underline;
   text-underline-offset: 4px;
 }
+
+/* Additions for Accordion content */
+.accordion-content {
+  padding: 1.5rem 0;
+  font-size: 1rem;
+  color: var(--color-gray-900);
+  line-height: 1.6;
+}
+
+.details-list {
+  padding-left: 1.5rem;
+  list-style-type: square;
+}
+
+.details-list li {
+  margin-bottom: 0.5rem;
+}
+
+.reviews-summary {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stars {
+  color: #e4002b;
+  letter-spacing: 2px;
+}
+
+.stars.empty {
+  color: var(--color-gray-300);
+}
+
+.review-card {
+  border-bottom: 1px solid var(--color-gray-200);
+  padding: 1.5rem 0;
+}
+
+.review-card:last-child {
+  border-bottom: none;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.review-author {
+  font-weight: bold;
+}
+
+.review-date {
+  color: var(--color-gray-800);
+  font-size: 0.85rem;
+}
+
+.review-text {
+  margin-top: 0.5rem;
+  font-style: italic;
+}
