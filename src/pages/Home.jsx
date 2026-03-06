@@ -36,7 +36,7 @@ const Home = () => {
                 width: '100%', 
                 padding: '2rem',
                 background: 'linear-gradient(transparent, var(--color-black))',
-                color: var(--color-white)
+                color: 'var(--color-white)'
               }}>
                 <h2 style={{ fontSize: '4rem', margin: 0 }}>RUNNING</h2>
                 <Link to="/category/shoes" className="btn btn-neon" style={{ marginTop: '1rem' }}>DISCOVER</Link>
@@ -60,7 +60,7 @@ const Home = () => {
                 width: '100%', 
                 padding: '2rem',
                 background: 'linear-gradient(transparent, var(--color-black))',
-                color: var(--color-white)
+                color: 'var(--color-white)'
               }}>
                 <h2 style={{ fontSize: '4rem', margin: 0 }}>SNEAKERS</h2>
                 <Link to="/category/sneakers" className="btn btn-neon" style={{ marginTop: '1rem' }}>DISCOVER</Link>
@@ -83,7 +83,7 @@ const Home = () => {
                 width: '100%', 
                 padding: '2rem',
                 background: 'linear-gradient(transparent, var(--color-black))',
-                color: var(--color-white)
+                color: 'var(--color-white)'
               }}>
                 <h2 style={{ fontSize: '4rem', margin: 0 }}>SLIDES</h2>
                 <Link to="/category/flip-flops" className="btn btn-neon" style={{ marginTop: '1rem' }}>DISCOVER</Link>
