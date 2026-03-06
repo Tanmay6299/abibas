@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { ArrowRight, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { ShopContext } from '../context/ShopContext';
@@ -16,10 +16,27 @@ const ProductGrid = ({ customProducts }) => {
            product.category.toLowerCase().includes(searchQuery.toLowerCase());
   });
 
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    const reveals = sectionRef.current.querySelectorAll('.reveal');
+    reveals.forEach(el => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, [filteredProducts]);
+
   return (
-    <section className="product-section" style={customProducts ? {paddingTop: '0'} : {}} id="sneakers">
+    <section className="product-section" style={customProducts ? {paddingTop: '0'} : {}} id="sneakers" ref={sectionRef}>
       {!customProducts && (
-        <div className="section-header">
+        <div className="section-header reveal">
           <h2 className="section-title">
             {searchQuery ? `SEARCH RESULTS FOR "${searchQuery.toUpperCase()}"` : 'TRENDING NOW'}
           </h2>
@@ -38,11 +55,11 @@ const ProductGrid = ({ customProducts }) => {
         </div>
       ) : (
         <div className="product-grid">
-          {filteredProducts.map(product => {
+          {filteredProducts.map((product, index) => {
             const isWishlisted = wishlistItems.includes(product.id);
             
             return (
-              <div key={product.id} className="product-card">
+              <div key={product.id} className="product-card reveal" style={{ transitionDelay: `${(index % 4) * 0.1}s` }}>
                 <div className="product-image-container">
                   <Link to={`/product/${product.id}`}>
                     <img src={product.image} alt={product.name} className="product-image" />

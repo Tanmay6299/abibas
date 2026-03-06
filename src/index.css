@@ -6,6 +6,7 @@
   --color-gray-300: #d4d4d4;
   --color-gray-800: #262626;
   --color-gray-900: #171717;
+  --color-volt: #ccff00; /* Neon Volt Accent */
   
   --font-heading: 'Impact', 'Arial Black', sans-serif;
   --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -100,10 +101,24 @@ img {
 .btn-solid {
   background-color: var(--color-black);
   color: var(--color-white);
+  border-color: var(--color-black);
 }
 
-.btn-solid::before {
-  background-color: var(--color-gray-900);
+.btn-solid:hover {
+  background-color: var(--color-volt);
+  color: var(--color-black);
+  border-color: var(--color-volt);
+}
+
+.btn-neon {
+  background-color: var(--color-volt);
+  color: var(--color-black);
+  border: none;
+}
+
+.btn-neon:hover {
+  background-color: var(--color-black);
+  color: var(--color-volt);
 }
 
 .container {
@@ -126,10 +141,50 @@ img {
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Reveal on Scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Glitch Text Effect */
+.glitch-text {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch-text:hover::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 2px;
+  text-shadow: -2px 0 var(--color-volt);
+  top: 0;
+  color: var(--color-black);
+  background: var(--color-white);
+  overflow: hidden;
+  clip: rect(0, 900px, 0, 0);
+  animation: noise-anim 2s infinite linear alternate-reverse;
+}
+
+@keyframes noise-anim {
+  0% { clip: rect(10px, 9999px, 50px, 0); }
+  20% { clip: rect(30px, 9999px, 20px, 0); }
+  40% { clip: rect(80px, 9999px, 40px, 0); }
+  60% { clip: rect(10px, 9999px, 70px, 0); }
+  80% { clip: rect(50px, 9999px, 30px, 0); }
+  100% { clip: rect(20px, 9999px, 60px, 0); }
 }

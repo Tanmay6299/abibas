@@ -1,0 +1,28 @@
+/* Marquee.css */
+.marquee-container {
+  background-color: var(--color-black);
+  color: var(--color-volt);
+  padding: 1.5rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+  border-top: 2px solid var(--color-volt);
+  border-bottom: 2px solid var(--color-volt);
+  margin: 4rem 0;
+}
+
+.marquee-content {
+  display: inline-block;
+  animation: marquee 30s linear infinite;
+}
+
+.marquee-text {
+  font-family: var(--font-heading);
+  font-size: 5rem;
+  margin: 0 2rem;
+  display: inline-block;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
