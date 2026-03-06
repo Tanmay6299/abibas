@@ -8,6 +8,8 @@ import Home from './pages/Home';
 import ProductDetails from './pages/ProductDetails';
 import Profile from './pages/Profile';
 import CategoryPage from './pages/CategoryPage';
+import Wishlist from './pages/Wishlist';
+import Checkout from './pages/Checkout';
 import './App.css';
 
 function App() {
@@ -22,6 +24,8 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/product/:id" element={<ProductDetails />} />
               <Route path="/category/:categoryName" element={<CategoryPage />} />
+              <Route path="/wishlist" element={<Wishlist />} />
+              <Route path="/checkout" element={<Checkout />} />
               <Route path="/profile" element={<Profile />} />
             </Routes>
           </main>

@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { X, Minus, Plus, Trash2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { ShopContext } from '../context/ShopContext';
 import './CartDrawer.css';
 
@@ -70,9 +71,13 @@ const CartDrawer = () => {
               <span>${cartTotal.toFixed(2)}</span>
             </div>
             <p className="cart-tax-note">Tax and shipping calculated at checkout</p>
-            <button className="btn btn-solid cart-checkout-btn">
+            <Link 
+              to="/checkout" 
+              className="btn btn-solid cart-checkout-btn"
+              onClick={() => setIsCartOpen(false)}
+            >
               CHECKOUT
-            </button>
+            </Link>
           </div>
         )}
       </div>

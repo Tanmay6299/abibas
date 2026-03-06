@@ -57,12 +57,12 @@ const Navbar = () => {
             <button type="submit" className="search-btn-icon"><Search size={20} /></button>
           </form>
           
-          <button className="icon-btn hide-mobile relative">
+          <Link to="/wishlist" className="icon-btn hide-mobile relative">
             <Heart size={20} />
             {wishlistItems.length > 0 && (
               <span className="interaction-badge">{wishlistItems.length}</span>
             )}
-          </button>
+          </Link>
           
           <Link to="/profile" className="icon-btn hide-mobile">
             <User size={20} />
