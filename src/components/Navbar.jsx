@@ -38,10 +38,10 @@ const Navbar = () => {
 
         {/* Desktop Links */}
         <ul className={`navbar-links ${isMobileMenuOpen ? 'active' : ''}`}>
-          <li><Link to="/">SHOES</Link></li>
-          <li><Link to="/">SNEAKERS</Link></li>
-          <li><Link to="/">FLIP-FLOPS</Link></li>
-          <li><Link to="/" style={{color: '#e4002b'}}>SALE</Link></li>
+          <li><Link to="/category/shoes">SHOES</Link></li>
+          <li><Link to="/category/sneakers">SNEAKERS</Link></li>
+          <li><Link to="/category/flip-flops">FLIP-FLOPS</Link></li>
+          <li><Link to="/category/sale" style={{color: '#e4002b'}}>SALE</Link></li>
         </ul>
 
         {/* Icons */}

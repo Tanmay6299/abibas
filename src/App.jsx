@@ -7,6 +7,7 @@ import CartDrawer from './components/CartDrawer';
 import Home from './pages/Home';
 import ProductDetails from './pages/ProductDetails';
 import Profile from './pages/Profile';
+import CategoryPage from './pages/CategoryPage';
 import './App.css';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/product/:id" element={<ProductDetails />} />
+              <Route path="/category/:categoryName" element={<CategoryPage />} />
               <Route path="/profile" element={<Profile />} />
             </Routes>
           </main>

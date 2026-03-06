@@ -4,28 +4,32 @@ import { Link } from 'react-router-dom';
 import { ShopContext } from '../context/ShopContext';
 import './ProductGrid.css';
 
-const ProductGrid = () => {
+const ProductGrid = ({ customProducts }) => {
   const { products, toggleWishlist, wishlistItems, searchQuery } = useContext(ShopContext);
 
-  // Filter products based on search query
-  const filteredProducts = products.filter(product => {
+  // Filter products based on search query (and use customProducts if provided)
+  const baseProducts = customProducts || products;
+  
+  const filteredProducts = baseProducts.filter(product => {
     if (!searchQuery) return true;
     return product.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
            product.category.toLowerCase().includes(searchQuery.toLowerCase());
   });
 
   return (
-    <section className="product-section container" id="sneakers">
-      <div className="section-header">
-        <h2 className="section-title">
-          {searchQuery ? `SEARCH RESULTS FOR "${searchQuery.toUpperCase()}"` : 'TRENDING NOW'}
-        </h2>
-        {!searchQuery && (
-          <a href="#" className="view-all-link">
-            VIEW ALL <ArrowRight size={16} />
-          </a>
-        )}
-      </div>
+    <section className="product-section" style={customProducts ? {paddingTop: '0'} : {}} id="sneakers">
+      {!customProducts && (
+        <div className="section-header">
+          <h2 className="section-title">
+            {searchQuery ? `SEARCH RESULTS FOR "${searchQuery.toUpperCase()}"` : 'TRENDING NOW'}
+          </h2>
+          {!searchQuery && (
+            <a href="#" className="view-all-link">
+              VIEW ALL <ArrowRight size={16} />
+            </a>
+          )}
+        </div>
+      )}
 
       {filteredProducts.length === 0 ? (
         <div style={{textAlign: 'center', padding: '4rem 0', fontFamily: 'var(--font-heading)'}}>
@@ -56,7 +60,14 @@ const ProductGrid = () => {
                 </div>
                 
                 <Link to={`/product/${product.id}`} className="product-info">
-                  <p className="product-price">${product.price}</p>
+                  {product.salePrice ? (
+                    <p className="product-price">
+                      <span style={{color: '#e4002b', marginRight: '0.5rem'}}>${product.salePrice}</span>
+                      <span style={{textDecoration: 'line-through', color: 'var(--color-gray-800)', fontSize: '0.9rem'}}>${product.price}</span>
+                    </p>
+                  ) : (
+                    <p className="product-price">${product.price}</p>
+                  )}
                   <h3 className="product-name">{product.name}</h3>
                   <p className="product-category">{product.category}</p>
                 </Link>
