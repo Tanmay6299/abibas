@@ -17,7 +17,7 @@ const Navbar = () => {
   return (
     <header className="navbar-wrapper">
       <div className="top-banner">
-        <span>FREE STANDARD SHIPPING & RETURNS | JOIN ADICLUB</span>
+        <span>FREE SHIPPING FOR ADICLUB MEMBERS | JOIN NOW</span>
       </div>
       
       <nav className="navbar container">
@@ -31,8 +31,8 @@ const Navbar = () => {
 
         {/* Logo */}
         <div className="navbar-logo">
-          <Link to="/" style={{fontFamily: 'var(--font-heading)', fontSize: '2rem', fontStyle: 'italic', letterSpacing: '-1px'}}>
-            /// BRAND
+          <Link to="/" style={{fontFamily: 'var(--font-heading)', fontSize: '2.5rem', fontWeight: '900', letterSpacing: '-2px', textTransform: 'lowercase'}}>
+            adidas
           </Link>
         </div>
 

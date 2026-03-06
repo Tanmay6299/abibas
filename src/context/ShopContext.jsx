@@ -18,156 +18,205 @@ export const ShopProvider = ({ children }) => {
     }, 3000);
   };
 
-  // Doubled Mock Products Database (24 items)
+  // Full Genuine Products Database (24 items)
   const products = [
     // SNEAKERS (8 items)
     {
-      id: 1, name: "OZWEEGO SNEAKERS", category: "Sneakers", price: 130, image: "/sneaker.png", new: true,
-      longDescription: "Stand out in the crowd while staying incredibly comfortable. The OZWEEGO takes late-'90s and early-'00s running style and propels it into the future.",
-      detailsList: ["Snug fit", "Lace closure", "Mesh, synthetic suede and TPU upper", "Adiprene cushioning"],
-      reviews: [{ id: 101, author: "SneakerHead99", rating: 5, date: "2 Weeks Ago", text: "Most comfortable shoes I own." }]
+      id: 1, name: "OZWEEGO OG SNEAKERS", category: "Sneakers", price: 130, image: "/sneaker.png", new: true,
+      longDescription: "Reimagined from the late '90s, the OZWEEGO blends retro elements with futuristic design lines. Signature eyestay and bold midsole lines make these a standout choice for urban exploration.",
+      detailsList: ["Regular fit", "Lace closure", "Mesh upper with suede overlays", "Adiprene+ forefoot cushioning", "Lightweight EVA midsole"],
+      reviews: [
+        { id: 101, author: "MARCUS_V", rating: 5, date: "2 Days Ago", text: "The comfort level is off the charts. Literally feels like walking on clouds." },
+        { id: 102, author: "SNEAKER_QUEEN", rating: 4, date: "1 Week Ago", text: "Love the chunky aesthetic, though they run slightly large." }
+      ]
     },
     {
-      id: 2, name: "NMD_R1 SNEAKERS", category: "Sneakers", price: 150, image: "/sneaker.png", new: false,
-      longDescription: "A streetwise essential. Combining the best of our past innovations with modern comfort technologies.",
-      detailsList: ["Lace closure", "Stretch knit upper", "BOOST midsole"],
-      reviews: [{ id: 401, author: "CityExplorer", rating: 5, date: "2 Weeks Ago", text: "The classic never dies." }]
+      id: 2, name: "NMD_R1 V3 GHOST", category: "Sneakers", price: 170, image: "/sneaker.png", new: false,
+      longDescription: "The evolution of the NMD continues. The R1 V3 takes the iconic silhouette and adds a tactical, translucent edge. Built for the daily commute with unmatched BOOST energy return.",
+      detailsList: ["Textile upper", "BOOST midsole", "Molded heel patch", "Rubber outsole", "Contains recycled materials"],
+      reviews: [
+        { id: 201, author: "TECH_WEAR", rating: 5, date: "3 Days Ago", text: "Perfect for my techwear fits. The translucent bits look insane in person." }
+      ]
     },
     {
-      id: 3, name: "FORUM HIGH", category: "Sneakers", salePrice: 90, price: 120, image: "/sneaker_high_top.png", new: false,
-      longDescription: "A legendary basketball shoe from the 80s returns. The Forum High features the iconic ankle strap.",
-      detailsList: ["Hook-and-loop strap", "Leather upper"],
-      reviews: [{ id: 501, author: "Hooper", rating: 5, date: "1 Month Ago", text: "Best retro silhouette." }]
+      id: 3, name: "FORUM 84 HIGH 'VINTAGE'", category: "Sneakers", salePrice: 95, price: 130, image: "/sneaker_high_top.png", new: false,
+      longDescription: "A direct nod to the 1984 original. These high-tops capture the spirit of the court with premium leather and the iconic X-strap design that defined an era of basketball culture.",
+      detailsList: ["Premium leather upper", "Adjustable ankle strap", "Terry cloth lining", "Durable rubber cupsole"],
+      reviews: [
+        { id: 301, author: "RETRO_B_BALL", rating: 5, date: "1 Month Ago", text: "The quality of the leather is much better than the standard versions. Absolute grail." }
+      ]
     },
     {
-      id: 4, name: "SUPERSTAR", category: "Sneakers", price: 100, image: "/sneaker_high_top.png", new: true,
-      longDescription: "The iconic shell-toe sneaker. Born on the basketball court, now a streetwear staple.",
-      detailsList: ["Classic rubber shell toe", "Leather upper"],
-      reviews: [{ id: 601, author: "RetroLover", rating: 4, date: "3 Days Ago", text: "Can never go wrong." }]
+      id: 4, name: "SUPERSTAR 82 SHELL-TOE", category: "Sneakers", price: 110, image: "/sneaker_high_top.png", new: true,
+      longDescription: "From the basketball courts of the 70s to the hip-hop stages of the 80s. The Superstar is the ultimate icon of street style, featuring the world-famous protective shell toe.",
+      detailsList: ["Iconic shell toe", "Smooth leather upper", "Serrated 3-Stripes", "Herringbone-pattern outsole"],
+      reviews: [
+        { id: 401, author: "CLASSIC_KICKS", rating: 5, date: "5 Days Ago", text: "You can't call yourself a sneakerhead without a pair of these. Timeless." }
+      ]
     },
     {
-      id: 13, name: "CAMPUS 00S", category: "Sneakers", price: 110, image: "/sneaker.png", new: true,
-      longDescription: "A fresh take on the classic Campus, inspired by the chunky aesthetic of the early 2000s.",
-      detailsList: ["Suede upper", "Textile lining", "Gum rubber outsole"],
-      reviews: [{ id: 1301, author: "SkaterBoi", rating: 5, date: "1 Week Ago", text: "Perfect chunky vibe." }]
+      id: 13, name: "CAMPUS 00S 'EMERALD'", category: "Sneakers", price: 110, image: "/sneaker.png", new: true,
+      longDescription: "Inspired by the skateboarding culture of the early 2000s. The Campus 00s brings back those chunky proportions and bold colors for a new generation of style icons.",
+      detailsList: ["Suede upper", "Extra wide laces", "Breathable textile lining", "Gum rubber outsole"],
+      reviews: [
+        { id: 1301, author: "SKATE_LIFE", rating: 5, date: "1 Week Ago", text: "Finally! A shoe that understands the chunky aesthetic perfectly." }
+      ]
     },
     {
-      id: 14, name: "SAMBA OG", category: "Sneakers", price: 100, image: "/sneaker_high_top.png", new: false,
-      longDescription: "The timeless football icon. The Samba OG remains a staple of terrace culture.",
-      detailsList: ["Full grain leather upper", "Suede overlays", "Gum rubber cupsole"],
-      reviews: [{ id: 1401, author: "StyleIcon", rating: 5, date: "2 Weeks Ago", text: "Goes with everything." }]
+      id: 14, name: "SAMBA DECONSTRUCTED", category: "Sneakers", price: 120, image: "/sneaker_high_top.png", new: false,
+      longDescription: "The Samba like you've never seen it before. Foldable, packable, and incredibly soft. This deconstructed take on the football icon is built for the modern minimal traveler.",
+      detailsList: ["Ultra-soft leather upper", "Collapsible heel", "Minimalist stitching", "Slim rubber outsole"],
+      reviews: [
+        { id: 1401, author: "MODERN_NOMAD", rating: 5, date: "2 Weeks Ago", text: "Best travel shoes ever. They take up zero space in my carry-on." }
+      ]
     },
     {
-      id: 15, name: "GAZELLE", category: "Sneakers", salePrice: 85, price: 100, image: "/sneaker.png", new: false,
-      longDescription: "First released in the 60s, the Gazelle is one of the most beloved sneakers in history.",
-      detailsList: ["Suede upper", "Synthetic lining", "Rubber outsole"],
-      reviews: [{ id: 1501, author: "ClassicFan", rating: 4, date: "1 Month Ago", text: "Simple and clean." }]
+      id: 15, name: "GAZELLE INDOOR 'LUCID BLUE'", category: "Sneakers", salePrice: 80, price: 110, image: "/sneaker.png", new: false,
+      longDescription: "Born in the training halls of the '60s, the Gazelle Indoor has found its home on the streets. This version features a premium suede upper and a semi-translucent gum sole.",
+      detailsList: ["Premium suede upper", "Semi-translucent gum rubber sole", "T-toe overlay", "Trefoil logo on tongue"],
+      reviews: [
+        { id: 1501, author: "LONDON_TERRACE", rating: 4, date: "2 Weeks Ago", text: "The color is vibrant and the gum sole is just perfect." }
+      ]
     },
     {
-      id: 16, name: "STAN SMITH", category: "Sneakers", price: 105, image: "/sneaker_high_top.png", new: false,
-      longDescription: "Named after one of the greatest tennis players. A minimalist masterpiece.",
-      detailsList: ["Synthetic upper (50% recycled)", "Perforated 3-Stripes", "Rubber outsole"],
-      reviews: [{ id: 1601, author: "EcoFriendly", rating: 5, date: "2 Months Ago", text: "Great sustainable option." }]
+      id: 16, name: "STAN SMITH 'RECON'", category: "Sneakers", price: 140, image: "/sneaker_high_top.png", new: false,
+      longDescription: "A high-end reinterpretation of the most famous tennis shoe. The Recon edition uses premium leather and subtle luxury detailing to elevate the minimalist silhouette.",
+      detailsList: ["Premium leather constructions", "Minimalist branding", "Off-white midsole for vintage look", "Leather lining"],
+      reviews: [
+        { id: 1601, author: "MINIMALIST_CHIC", rating: 5, date: "3 Weeks Ago", text: "Worth every penny for the leather quality alone. So clean." }
+      ]
     },
 
     // RUNNING SHOES (8 items)
     {
-      id: 5, name: "ULTRABOOST LIGHT", category: "Running Shoes", salePrice: 150, price: 190, image: "/hero_shoe.png", new: true,
-      longDescription: "Experience infinite energy return with our lightest BOOST ever.",
-      detailsList: ["Linear Energy Push system", "Light BOOST"],
-      reviews: [{ id: 301, author: "MarathonMike", rating: 5, date: "3 Days Ago", text: "Unbelievable energy return." }]
+      id: 5, name: "ULTRABOOST LIGHT 23", category: "Running Shoes", salePrice: 140, price: 190, image: "/hero_shoe.png", new: true,
+      longDescription: "Our lightest Ultraboost ever. Experience epic energy in intermediate and long-distance runs. Engineered for the female foot with a narrower heel fit and lower instep.",
+      detailsList: ["30% lighter BOOST material", "PRIMEKNIT+ textile upper", "Continental™ Better Rubber", "Linear Energy Push system"],
+      reviews: [
+        { id: 501, author: "RUNNER_GRACE", rating: 5, date: "1 Day Ago", text: "I didn't think they could make Boost any better, but this lightness is a game changer." }
+      ]
     },
     {
-      id: 6, name: "ADIZERO ADIOS PRO", category: "Running Shoes", price: 250, image: "/hero_shoe.png", new: true,
-      longDescription: "Built for speed. Our carbon-infused running shoe.",
-      detailsList: ["Lightstrike Pro cushioning", "ENERGYRODS"],
-      reviews: [{ id: 701, author: "SpeedDemon", rating: 5, date: "2 Months Ago", text: "Essentially cheating." }]
+      id: 6, name: "ADIZERO ADIOS PRO 3", category: "Running Shoes", price: 250, image: "/hero_shoe.png", new: true,
+      longDescription: "The ultimate long-distance racing shoe. Developed with world-class athletes to break records. Carbon-infused ENERGYRODS 2.0 provide lightweight stiffness for a snappy, efficient stride.",
+      detailsList: ["Two layers of Lightstrike Pro", "ENERGYRODS limiting energy loss", "Synthetic mesh upper", "Targeted Continental™ Rubber"],
+      reviews: [
+        { id: 601, author: "ELITE_RUN", rating: 5, date: "5 Days Ago", text: "PB'd my half marathon in these. They just want to go fast." }
+      ]
     },
     {
-      id: 7, name: "DURAMO SL", category: "Running Shoes", salePrice: 50, price: 70, image: "/hero_shoe.png", new: false,
-      longDescription: "Your daily running shoe. Lightweight comfort for short runs.",
-      detailsList: ["Lightmotion cushioning", "Mesh upper"],
-      reviews: [{ id: 801, author: "GymRat", rating: 4, date: "1 Week Ago", text: "Great budget shoe." }]
+      id: 7, name: "DURAMO SPEED 2", category: "Running Shoes", salePrice: 55, price: 85, image: "/hero_shoe.png", new: false,
+      longDescription: "Step up your training without breaking the bank. The Duramo Speed features a lightweight, breathable mesh upper and a full-length LIGHTSTRIKE midsole for responsive cushioning.",
+      detailsList: ["Lightweight mesh upper", "Lightstrike cushioning", "Adiwear outsole", "Contains 50% recycled content"],
+      reviews: [
+        { id: 701, author: "DAILY_JOGGER", rating: 4, date: "1 Week Ago", text: "Great value for a daily trainer. Very breathable." }
+      ]
     },
     {
-      id: 8, name: "4DFWD 3", category: "Running Shoes", price: 200, image: "/hero_shoe.png", new: false,
-      longDescription: "The future is here. Featuring a 3D-printed midsole.",
-      detailsList: ["4D 3D-printed midsole", "PRIMEKNIT upper"],
-      reviews: [{ id: 901, author: "TechGeek", rating: 3, date: "3 Weeks Ago", text: "Looks amazing." }]
+      id: 8, name: "4DFWD 3 'VOLT'", category: "Running Shoes", price: 210, image: "/hero_shoe.png", new: false,
+      longDescription: "The world's first bow-shaped 3D-printed midsole. Engineered to compress forward, reducing braking forces and transforming impact energy into forward motion.",
+      detailsList: ["3D-printed 4D midsole", "Primeknit+ sock-like fit", "Integrated lace cage", "Continental™ Rubber outsole"],
+      reviews: [
+        { id: 801, author: "FUTURE_RUN", rating: 5, date: "2 Weeks Ago", text: "Walking in these feels futuristic. The forward momentum is actually noticeable." }
+      ]
     },
     {
-      id: 17, name: "SOLARGLIDE 6", category: "Running Shoes", salePrice: 100, price: 140, image: "/hero_shoe.png", new: false,
-      longDescription: "A reliable daily trainer for runners of all levels.",
-      detailsList: ["BOOST cushioning", "LEP 2.0 system", "Circular knit upper"],
-      reviews: [{ id: 1701, author: "DailyMix", rating: 4, date: "2 Weeks Ago", text: "Solid daily trainer." }]
+      id: 17, name: "SOLARBOOST 5", category: "Running Shoes", price: 160, image: "/hero_shoe.png", new: true,
+      longDescription: "The workhorse for your daily miles. Providing steady support and reliable comfort with a full-length BOOST midsole and a supportive 'Rail' system to guide the foot.",
+      detailsList: ["BOOST cushioning", "Control Rail technology", "Engineered mesh upper", "Stretchweb outsole"],
+      reviews: [
+        { id: 1701, author: "MARATHON_TRAIN", rating: 5, date: "1 Week Ago", text: "My fifth pair of Solarboosts. Consistently great for long training miles." }
+      ]
     },
     {
-      id: 18, name: "TERREX AGRAVIC FLOW", category: "Running Shoes", price: 160, image: "/hero_shoe.png", new: true,
-      longDescription: "Conquer the trails with these rugged and responsive trail runners.",
-      detailsList: ["Continental™ Rubber outsole", "BOOST midsole", "Abrasion-resistant overlays"],
-      reviews: [{ id: 1801, author: "TrailRunner", rating: 5, date: "5 Days Ago", text: "Best grip on the market." }]
+      id: 18, name: "TERREX AGRAVIC BEYOND", category: "Running Shoes", price: 180, image: "/hero_shoe.png", new: true,
+      longDescription: "Take your run off-road. The Terrex Agravic Beyond combines a gravel-ready outsole with a responsive midsole to keep you moving fast on technical terrain.",
+      detailsList: ["Continental™ Lugged Outsole", "Pro-Moderator support", "Abrasion-resistant mesh", "Speed lacing system"],
+      reviews: [
+        { id: 1801, author: "TRAIL_KING", rating: 5, date: "3 Days Ago", text: "The grip on wet rocks is insane. Continental rubber never misses." }
+      ]
     },
     {
-      id: 19, name: "SUPERNOVA RISE", category: "Running Shoes", price: 140, image: "/hero_shoe.png", new: true,
-      longDescription: "Designed for comfort and support during every run.",
-      detailsList: ["Dreamstrike+ foam", "Support Rods", "Engineered mesh upper"],
-      reviews: [{ id: 1901, author: "ComfortFirst", rating: 5, date: "1 Week Ago", text: "Softest ride ever." }]
+      id: 19, name: "SUPERNOVA STRIDE", category: "Running Shoes", price: 110, image: "/hero_shoe.png", new: false,
+      longDescription: "Entry-level professional performance. The Supernova Stride uses a hybrid Dreamstrike+ foam to provide high energy return at an accessible price point.",
+      detailsList: ["Dreamstrike+ midsole", "Support Rods system", "Padded tongue and heel", "Engineered mesh"],
+      reviews: [
+        { id: 1901, author: "NEW_RUNNER", rating: 4, date: "2 Weeks Ago", text: "Transitioned from standard sneakers to these, my knees thank me." }
+      ]
     },
     {
-      id: 20, name: "QUESTAR", category: "Running Shoes", salePrice: 60, price: 80, image: "/hero_shoe.png", new: false,
-      longDescription: "Find your rhythm in these comfortable and durable running shoes.",
-      detailsList: ["Bounce midsole", "Geofit padded collar", "Textile upper"],
-      reviews: [{ id: 2001, author: "BeginnerRun", rating: 4, date: "2 Months Ago", text: "Great for getting started." }]
+      id: 20, name: "ADIZERO SL 'TRAINER'", category: "Running Shoes", salePrice: 90, price: 120, image: "/hero_shoe.png", new: false,
+      longDescription: "Elite technology for daily training. The SL (Super Light) is a fast, daily trainer that uses the same Lightstrike Pro foam found in our record-breaking racing shoes.",
+      detailsList: ["Lightstrike Pro forefoot insert", "Full Lightstrike chassis", "Lightweight mesh", "Grippy rubber outsole"],
+      reviews: [
+        { id: 2001, author: "SPEED_WORK", rating: 5, date: "1 Month Ago", text: "Perfect for tempo runs and track workouts. So light." }
+      ]
     },
 
     // FLIP FLOPS / SLIDES (8 items)
     {
-      id: 9, name: "Y-3 SLIDES", category: "Flip-Flops", price: 90, image: "/flipflop.png", new: false,
-      longDescription: "Premium materials meet minimalist design.",
-      detailsList: ["PORON® performance cushioning", "Y-3 Logo"],
-      reviews: [{ id: 201, author: "LuxuryLover", rating: 5, date: "1 Week Ago", text: "Absolutely stunning." }]
+      id: 9, name: "Y-3 ADILETTE 'LUXE'", category: "Flip-Flops", price: 150, image: "/flipflop.png", new: false,
+      longDescription: "Yohji Yamamoto's high-fashion take on the iconic Adilette. Featuring a premium leather bandage and exaggerated proportions for a sophisticated poolside statement.",
+      detailsList: ["Premium leather upper", "Contoured footbed", "Y-3 embossed logo", "Textured rubber outsole"],
+      reviews: [
+        { id: 901, author: "FASHION_FORWARD", rating: 5, date: "1 Week Ago", text: "The most expensive slides I own, and definitely the best looking." }
+      ]
     },
     {
-      id: 10, name: "ADILETTE COMFORT", category: "Flip-Flops", price: 40, image: "/flipflop.png", new: true,
-      longDescription: "The ultimate lounge slide. Cloudfoam Plus cushioning.",
-      detailsList: ["Cloudfoam Plus footbed"],
-      reviews: [{ id: 1001, author: "ChillGuy", rating: 5, date: "4 Days Ago", text: "Like pillows." }]
+      id: 10, name: "ADILETTE 22 'CARBON'", category: "Flip-Flops", price: 60, image: "/flipflop.png", new: true,
+      longDescription: "Inspired by futuristic expedition gear and 3D-printed topography. The Adilette 22 challenges the status quo with its unique textured aesthetic and bio-based material construction.",
+      detailsList: ["Bio-based EVA content", "3D-effect topography", "Ergonomic footbed", "Durable grip"],
+      reviews: [
+        { id: 1001, author: "FUTURE_BOI", rating: 5, date: "4 Days Ago", text: "Everyone asks about these when I wear them. So unique." }
+      ]
     },
     {
-      id: 11, name: "ADILETTE SHOWER", category: "Flip-Flops", salePrice: 20, price: 30, image: "/flipflop.png", new: false,
-      longDescription: "Essential for the locker room. Quick-drying.",
-      detailsList: ["Quick-dry bandage"],
-      reviews: [{ id: 1101, author: "Swimmer12", rating: 4, date: "1 Month Ago", text: "Basic but good." }]
+      id: 11, name: "ALPHABOUNCE+ RECOVERY", category: "Flip-Flops", salePrice: 35, price: 50, image: "/flipflop.png", new: false,
+      longDescription: "Engineered for active recovery. The Alphabounce footbed provides massage-like comfort to tired feet after intense training or long days on your feet.",
+      detailsList: ["Contoured Bounce footbed", "Adjustable synthetic strap", "Soft textile lining", "EVA outsole"],
+      reviews: [
+        { id: 1101, author: "BBALL_PLAYER", rating: 5, date: "1 Month Ago", text: "I put these on immediately after every game. Total relief." }
+      ]
     },
     {
-      id: 12, name: "YZY SLIDE", category: "Flip-Flops", price: 70, image: "/flipflop.png", new: false,
-      longDescription: "The minimal slip-on everyone is talking about.",
-      detailsList: ["Injected EVA foam", "Minimalist"],
-      reviews: [{ id: 1201, author: "HypeBeast", rating: 5, date: "2 Weeks Ago", text: "Worth it." }]
+      id: 12, name: "ADILETTE AQUA 'ROYAL'", category: "Flip-Flops", price: 28, image: "/flipflop.png", new: false,
+      longDescription: "The essential locker-room slide. One-piece molded EVA construction makes it completely waterproof and quick-drying. Lightweight, simple, and effective.",
+      detailsList: ["Cloudfoam footbed", "One-piece molded EVA", "Quick-drying", "Ultra-lightweight"],
+      reviews: [
+        { id: 1201, author: "SWIM_TEAM", rating: 4, date: "2 Weeks Ago", text: "Dry in minutes. Perfect for the shower and pool." }
+      ]
     },
     {
-      id: 21, name: "TERREX SUMRA", category: "Flip-Flops", price: 85, image: "/flipflop.png", new: true,
-      longDescription: "Versatile sandals for all your summer adventures.",
-      detailsList: ["Continental™ Rubber outsole", "Adjustable straps", "Breathable feel"],
-      reviews: [{ id: 2101, author: "AdventureAwaits", rating: 5, date: "3 Days Ago", text: "Can hike in these!" }]
+      id: 21, name: "TERREX SUMRA 'SANDAL'", category: "Flip-Flops", price: 90, image: "/flipflop.png", new: true,
+      longDescription: "The Adilette's rugged cousin. Built for summer hiking and water activities with adjustable straps and a heavy-duty Continental™ Rubber outsole.",
+      detailsList: ["Elastic heel strap", "Continental™ Rubber outsole", "Breathable textile", "Adjustable fit"],
+      reviews: [
+        { id: 2101, author: "OUTDOOR_GUY", rating: 5, date: "3 Days Ago", text: "Wore these through a river hike and they stayed perfectly secure." }
+      ]
     },
     {
-      id: 22, name: "ADILETTE 22", category: "Flip-Flops", salePrice: 45, price: 60, image: "/flipflop.png", new: true,
-      longDescription: "Inspired by 3D topography. A futuristic look for a classic slide.",
-      detailsList: ["Bio-based EVA material", "Textured grip"],
-      reviews: [{ id: 2201, author: "FutureVibe", rating: 5, date: "1 Week Ago", text: "Love the 3D look." }]
+      id: 22, name: "ADILETTE COMFORT 'LOGO'", category: "Flip-Flops", price: 40, image: "/flipflop.png", new: false,
+      longDescription: "The gold standard of comfort. Featuring a super-soft Cloudfoam Plus footbed that helps recharge your energy with every step. Finished with classic 3-Stripes branding.",
+      detailsList: ["Cloudfoam Plus footbed", "Synthetic bandage upper", "Lightweight EVA outsole", "Padded lining"],
+      reviews: [
+        { id: 2201, author: "LOUNGE_MASTER", rating: 5, date: "1 Week Ago", text: "Literally the only things I wear around the house." }
+      ]
     },
     {
-      id: 23, name: "ALPHABOUNCE SLIDES", category: "Flip-Flops", price: 55, image: "/flipflop.png", new: false,
-      longDescription: "Recovery slides with Alphabounce cushioning for tired feet.",
-      detailsList: ["Alphabounce footbed", "Adjustable strap"],
-      reviews: [{ id: 2301, author: "Baller", rating: 4, date: "2 Weeks Ago", text: "Great for after the game." }]
+      id: 23, name: "ADILETTE BOOST 'TRIPLE BLACK'", category: "Flip-Flops", price: 70, image: "/flipflop.png", new: true,
+      longDescription: "Bringing the miracle of BOOST to your vacation. These slides feature a full-length Boost midsole for a level of cushioning never before seen in a slide.",
+      detailsList: ["Full-length BOOST midsole", "Classic 3-Stripes bandage", "Molded fit", "Classic Adilette silhouette"],
+      reviews: [
+        { id: 2301, author: "BOOST_HEAD", rating: 5, date: "2 Weeks Ago", text: "Finally! Slides with Boost. The comfort is incomparable." }
+      ]
     },
     {
-      id: 24, name: "ADILETTE AQUA", category: "Flip-Flops", salePrice: 15, price: 25, image: "/flipflop.png", new: false,
-      longDescription: "Clean, quick-drying slides for the pool deck.",
-      detailsList: ["Molded EVA upper", "Quick-dry"],
-      reviews: [{ id: 2401, author: "PoolBoy", rating: 5, date: "1 Month Ago", text: "Perfect pool slides." }]
+      id: 24, name: "ADILETTE TND", category: "Flip-Flops", salePrice: 20, price: 35, image: "/flipflop.png", new: false,
+      longDescription: "A versatile slide for every day. The TND (Team Name Design) features a classic look with modern materials for durability and comfort in all conditions.",
+      detailsList: ["Superior grip outsole", "Synthetic upper", "Fast drying", "Textured footbed"],
+      reviews: [
+        { id: 2401, author: "SOCCER_MOM", rating: 5, date: "1 Month Ago", text: "Great for my kids after practice. They last forever." }
+      ]
     }
   ];
 

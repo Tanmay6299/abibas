@@ -1,10 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Facebook, Twitter, Instagram, Youtube, Check } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ShopContext } from '../context/ShopContext';
 import './Footer.css';
 
 const Footer = () => {
   const [email, setEmail] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
+  const { showToast } = useContext(ShopContext);
+
+  const handleComingSoon = (e) => {
+    e.preventDefault();
+    showToast("THIS FEATURE IS COMING SOON TO ADICLUB!", "info");
+  };
 
   const handleSubscribe = (e) => {
     e.preventDefault();
@@ -51,13 +59,13 @@ const Footer = () => {
         <div className="footer-col">
           <h3>PRODUCTS</h3>
           <ul>
-            <li><a href="#">Shoes</a></li>
-            <li><a href="#">Sneakers</a></li>
-            <li><a href="#">Flip-Flops</a></li>
-            <li><a href="#">Clothing</a></li>
-            <li><a href="#">Accessories</a></li>
-            <li><a href="#">New Arrivals</a></li>
-            <li><a href="#">Release Dates</a></li>
+            <li><Link to="/category/shoes">Shoes</Link></li>
+            <li><Link to="/category/sneakers">Sneakers</Link></li>
+            <li><Link to="/category/flip-flops">Flip-Flops</Link></li>
+            <li><a href="#" onClick={handleComingSoon}>Clothing</a></li>
+            <li><a href="#" onClick={handleComingSoon}>Accessories</a></li>
+            <li><Link to="/category/sale">New Arrivals</Link></li>
+            <li><a href="#" onClick={handleComingSoon}>Release Dates</a></li>
           </ul>
         </div>
         
@@ -76,13 +84,13 @@ const Footer = () => {
         <div className="footer-col">
           <h3>SUPPORT</h3>
           <ul>
-            <li><a href="#">Help</a></li>
-            <li><a href="#">Returns & Exchanges</a></li>
-            <li><a href="#">Order Tracker</a></li>
-            <li><a href="#">Store Locator</a></li>
-            <li><a href="#">Size Charts</a></li>
-            <li><a href="#">Gift Cards</a></li>
-            <li><a href="#">Promotions</a></li>
+            <li><a href="#" onClick={handleComingSoon}>Help</a></li>
+            <li><a href="#" onClick={handleComingSoon}>Returns & Exchanges</a></li>
+            <li><Link to="/profile?tab=orders">Order Tracker</Link></li>
+            <li><a href="#" onClick={handleComingSoon}>Store Locator</a></li>
+            <li><a href="#" onClick={handleComingSoon}>Size Charts</a></li>
+            <li><a href="#" onClick={handleComingSoon}>Gift Cards</a></li>
+            <li><a href="#" onClick={handleComingSoon}>Promotions</a></li>
           </ul>
         </div>
         
@@ -112,7 +120,7 @@ const Footer = () => {
             <li><a href="#">Privacy Policy</a></li>
             <li><a href="#">Terms and Conditions</a></li>
           </ul>
-          <p className="copyright">&copy; 2026 BRAND America, Inc.</p>
+          <p className="copyright">&copy; {new Date().getFullYear()} ADIDAS CLONE. NO RIGHTS RESERVED. (EDUCATIONAL PROJECT)</p>
         </div>
       </div>
     </footer>

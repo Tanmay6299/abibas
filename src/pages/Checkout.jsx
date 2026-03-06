@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { CheckCircle, ArrowRight, ArrowLeft, CreditCard, Truck, ShieldCheck } from 'lucide-react';
 import { ShopContext } from '../context/ShopContext';
@@ -8,6 +8,8 @@ const Checkout = () => {
   const { cartItems, cartTotal } = useContext(ShopContext);
   const [step, setStep] = useState(1);
   const navigate = useNavigate();
+  const orderId = useRef(`AD-${Math.floor(100000 + Math.random() * 900000)}`);
+  const orderDate = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 
   const [formData, setFormData] = useState({
     email: '',
@@ -61,12 +63,14 @@ const Checkout = () => {
       <div className="checkout-page">
         <div className="container checkout-success">
           <CheckCircle size={80} className="success-icon" />
-          <h1 className="success-title">THANK YOU!</h1>
-          <p style={{fontSize: '1.25rem', marginBottom: '1rem'}}>Your order #AD-55219 has been placed successfully.</p>
-          <p style={{color: 'var(--color-gray-800)', marginBottom: '3rem'}}>We've sent a confirmation email to {formData.email}.</p>
-          <Link to="/" className="btn btn-solid" style={{display: 'inline-block'}}>
-            CONTINUE SHOPPING
-          </Link>
+          <h1 className="success-title">THANK YOU FOR YOUR ORDER!</h1>
+          <p style={{fontSize: '1.25rem', marginBottom: '1rem'}}>Your order <strong>{orderId.current}</strong> has been placed successfully.</p>
+          <p style={{color: 'var(--color-gray-800)', marginBottom: '1rem'}}>Date: {orderDate}</p>
+          <p style={{color: 'var(--color-gray-800)', marginBottom: '3rem'}}>We've sent a confirmation email to <strong>{formData.email || 'your email'}</strong>.</p>
+          <div style={{display: 'flex', gap: '1rem', justifyContent: 'center'}}>
+            <button className="btn btn-outline" onClick={() => window.print()}>PRINT RECEIPT</button>
+            <Link to="/" className="btn btn-solid">CONTINUE SHOPPING</Link>
+          </div>
         </div>
       </div>
     );
