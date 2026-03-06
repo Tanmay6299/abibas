@@ -1,0 +1,132 @@
+/* Footer.css */
+.footer {
+  background-color: var(--color-white);
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-gray-200);
+}
+
+.footer-newsletter {
+  background-color: #ede734; /* Adidas signature yellow */
+  padding: 3rem 0;
+  margin-bottom: 3rem;
+}
+
+.newsletter-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .newsletter-content {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+.newsletter-title {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.btn-newsletter {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  white-space: nowrap;
+}
+
+.btn-newsletter:hover {
+  background-color: var(--color-gray-800);
+}
+
+.footer-links-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding-bottom: 3rem;
+}
+
+@media (min-width: 600px) {
+  .footer-links-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer-links-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.footer-col h3 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.footer-col ul li {
+  margin-bottom: 0.75rem;
+}
+
+.footer-col ul li a {
+  font-size: 1rem;
+  color: var(--color-gray-800);
+}
+
+.footer-col ul li a:hover {
+  text-decoration: underline;
+  color: var(--color-black);
+}
+
+.social-icons {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.social-icons a {
+  color: var(--color-black);
+  transition: transform var(--transition-fast);
+}
+
+.social-icons a:hover {
+  transform: scale(1.1);
+}
+
+.footer-bottom {
+  background-color: var(--color-gray-900);
+  color: var(--color-gray-300);
+  padding: 1.5rem 0;
+  font-size: 0.8rem;
+}
+
+.bottom-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+@media (min-width: 900px) {
+  .bottom-content {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.bottom-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.bottom-links a:hover {
+  color: var(--color-white);
+  text-decoration: underline;
+}
