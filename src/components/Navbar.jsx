@@ -6,7 +6,7 @@ import './Navbar.css';
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { cartCount, setIsCartOpen, searchQuery, setSearchQuery, wishlistItems } = useContext(ShopContext);
+  const { cartCount, setIsCartOpen, searchQuery, setSearchQuery, wishlistItems, user } = useContext(ShopContext);
   const navigate = useNavigate();
 
   const handleSearch = (e) => {
@@ -64,7 +64,7 @@ const Navbar = () => {
             )}
           </Link>
           
-          <Link to="/profile" className="icon-btn hide-mobile">
+          <Link to={user ? "/profile" : "/login"} className="icon-btn hide-mobile">
             <User size={20} />
           </Link>
           

@@ -1,0 +1,113 @@
+/* LoginSignup.css */
+.auth-page {
+  padding: 4rem 0;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-white);
+}
+
+.auth-container {
+  width: 100%;
+  max-width: 500px;
+  padding: 3rem;
+  border: 1px solid var(--color-gray-200);
+  background-color: var(--color-white);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.auth-header {
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.auth-title {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: -1px;
+}
+
+.auth-subtitle {
+  color: var(--color-gray-800);
+  font-size: 0.9rem;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-black);
+}
+
+.form-group input {
+  padding: 1rem;
+  border: 1px solid var(--color-gray-300);
+  background-color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: border-color var(--transition-fast);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--color-black);
+}
+
+.auth-footer {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.auth-toggle-btn {
+  background: none;
+  border: none;
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+.adiclub-benefits {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-gray-200);
+}
+
+.adiclub-benefits h3 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.benefit-item {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--color-gray-900);
+}
+
+.benefit-icon {
+  color: var(--color-black);
+  flex-shrink: 0;
+}

@@ -7,6 +7,7 @@ export const ShopProvider = ({ children }) => {
   const [wishlistItems, setWishlistItems] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [user, setUser] = useState(null);
 
   // Doubled Mock Products Database (24 items)
   const products = [
@@ -194,14 +195,35 @@ export const ShopProvider = ({ children }) => {
   const cartTotal = cartItems.reduce((total, item) => total + ((item.salePrice || item.price) * item.quantity), 0);
   const cartCount = cartItems.reduce((count, item) => count + item.quantity, 0);
 
-  // Wishlist Functions
-  const toggleWishlist = (productId) => {
-    setWishlistItems(prev => {
-      if (prev.includes(productId)) {
-        return prev.filter(id => id !== productId);
-      }
-      return [...prev, productId];
-    });
+  // Authentication Functions
+  const login = (email, password) => {
+    // Simulated login logic
+    const mockUser = {
+      name: email.split('@')[0].toUpperCase(),
+      email: email,
+      level: 3,
+      points: 4250,
+      joinedDate: "October 2025"
+    };
+    setUser(mockUser);
+    return true;
+  };
+
+  const signup = (userData) => {
+    // Simulated signup logic
+    const newUser = {
+      ...userData,
+      name: userData.firstName.toUpperCase(),
+      level: 1,
+      points: 0,
+      joinedDate: new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
+    };
+    setUser(newUser);
+    return true;
+  };
+
+  const logout = () => {
+    setUser(null);
   };
 
   return (
@@ -218,7 +240,11 @@ export const ShopProvider = ({ children }) => {
       wishlistItems,
       toggleWishlist,
       searchQuery,
-      setSearchQuery
+      setSearchQuery,
+      user,
+      login,
+      signup,
+      logout
     }}>
       {children}
     </ShopContext.Provider>

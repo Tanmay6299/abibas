@@ -10,6 +10,7 @@ import Profile from './pages/Profile';
 import CategoryPage from './pages/CategoryPage';
 import Wishlist from './pages/Wishlist';
 import Checkout from './pages/Checkout';
+import LoginSignup from './pages/LoginSignup';
 import './App.css';
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
               <Route path="/wishlist" element={<Wishlist />} />
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path="/login" element={<LoginSignup />} />
             </Routes>
           </main>
           <Footer />

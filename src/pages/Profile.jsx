@@ -1,9 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ArrowRight, Package, Heart, User, MapPin, CreditCard, LogOut } from 'lucide-react';
+import { ShopContext } from '../context/ShopContext';
 import './Profile.css';
 
 const Profile = () => {
   const [activeTab, setActiveTab] = useState('orders');
+  const { user, logout } = useContext(ShopContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user) {
+      navigate('/login');
+    }
+  }, [user, navigate]);
+
+  if (!user) return null;
 
   return (
     <div className="profile-page">
@@ -12,8 +24,8 @@ const Profile = () => {
         {/* Sidebar */}
         <aside className="profile-sidebar">
           <div className="profile-header">
-            <h1 className="profile-name">TANMAY K.</h1>
-            <span className="profile-level">ADICLUB LEVEL 3</span>
+            <h1 className="profile-name">{user.name}</h1>
+            <span className="profile-level">ADICLUB LEVEL {user.level}</span>
           </div>
 
           <nav className="profile-nav">
@@ -40,7 +52,14 @@ const Profile = () => {
                <span style={{display: 'flex', gap: '0.5rem', alignItems: 'center'}}><CreditCard size={18} /> Payment Methods</span>
               <ArrowRight size={16} />
             </button>
-            <button className="profile-nav-link" style={{marginTop: '2rem', color: '#e4002b', borderColor: '#e4002b'}}>
+            <button 
+              className="profile-nav-link" 
+              style={{marginTop: '2rem', color: '#e4002b', borderColor: '#e4002b'}}
+              onClick={() => {
+                logout();
+                navigate('/');
+              }}
+            >
                <span style={{display: 'flex', gap: '0.5rem', alignItems: 'center'}}><LogOut size={18} /> Log Out</span>
             </button>
           </nav>
@@ -51,7 +70,7 @@ const Profile = () => {
           <div className="points-card">
             <div>
               <p className="points-label">Available Points</p>
-              <h2 className="points-number">4,250</h2>
+              <h2 className="points-number">{user.points.toLocaleString()}</h2>
             </div>
             <button className="btn btn-outline" style={{borderColor: '#ede734', color: '#ede734'}}>REDEEM POINTS</button>
           </div>
