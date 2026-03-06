@@ -17,6 +17,16 @@ const Hero = () => {
           <button className="btn btn-solid">
             SHOP NOW <ArrowRight size={20} style={{marginLeft: '0.5rem'}} />
           </button>
+          
+          <div className="hero-collections">
+            <span className="collection-label">TRENDING COLLECTIONS:</span>
+            <div className="collection-links">
+              <a href="#sneakers" className="collection-link">ULTRABOOST</a>
+              <a href="#sneakers" className="collection-link">NMD</a>
+              <a href="#flipflops" className="collection-link">Y-3 SLIDES</a>
+              <a href="#sneakers" className="collection-link">OZWEEGO</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
