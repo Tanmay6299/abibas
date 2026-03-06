@@ -1,9 +1,18 @@
-import React, { useState } from 'react';
-import { Search, User, ShoppingBag, Menu, X } from 'lucide-react';
+import React, { useState, useContext } from 'react';
+import { Search, User, ShoppingBag, Menu, X, Heart } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { ShopContext } from '../context/ShopContext';
 import './Navbar.css';
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { cartCount, setIsCartOpen, searchQuery, setSearchQuery, wishlistItems } = useContext(ShopContext);
+  const navigate = useNavigate();
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    navigate('/');
+  };
 
   return (
     <header className="navbar-wrapper">
@@ -22,30 +31,48 @@ const Navbar = () => {
 
         {/* Logo */}
         <div className="navbar-logo">
-          {/* Using a bold simple text for custom brand like Adidas */}
-          <a href="/" style={{fontFamily: 'var(--font-heading)', fontSize: '2rem', fontStyle: 'italic', letterSpacing: '-1px'}}>
+          <Link to="/" style={{fontFamily: 'var(--font-heading)', fontSize: '2rem', fontStyle: 'italic', letterSpacing: '-1px'}}>
             /// BRAND
-          </a>
+          </Link>
         </div>
 
         {/* Desktop Links */}
         <ul className={`navbar-links ${isMobileMenuOpen ? 'active' : ''}`}>
-          <li><a href="#shoes">SHOES</a></li>
-          <li><a href="#sneakers">SNEAKERS</a></li>
-          <li><a href="#flipflops">FLIP-FLOPS</a></li>
-          <li><a href="#sale" style={{color: '#e4002b'}}>SALE</a></li>
+          <li><Link to="/">SHOES</Link></li>
+          <li><Link to="/">SNEAKERS</Link></li>
+          <li><Link to="/">FLIP-FLOPS</Link></li>
+          <li><Link to="/" style={{color: '#e4002b'}}>SALE</Link></li>
         </ul>
 
         {/* Icons */}
         <div className="navbar-icons">
-          <button className="icon-btn search-wrapper">
-            <input type="text" placeholder="Search" className="search-input" />
-            <Search size={20} />
+          <form className="search-wrapper" onSubmit={handleSearch}>
+            <input 
+              type="text" 
+              placeholder="Search" 
+              className="search-input"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            <button type="submit" className="search-btn-icon"><Search size={20} /></button>
+          </form>
+          
+          <button className="icon-btn hide-mobile relative">
+            <Heart size={20} />
+            {wishlistItems.length > 0 && (
+              <span className="interaction-badge">{wishlistItems.length}</span>
+            )}
           </button>
-          <button className="icon-btn hide-mobile"><User size={20} /></button>
-          <button className="icon-btn relative">
+          
+          <button className="icon-btn hide-mobile">
+            <User size={20} />
+          </button>
+          
+          <button className="icon-btn relative" onClick={() => setIsCartOpen(true)}>
             <ShoppingBag size={20} />
-            <span className="cart-badge">0</span>
+            {cartCount > 0 && (
+              <span className="interaction-badge">{cartCount}</span>
+            )}
           </button>
         </div>
       </nav>
